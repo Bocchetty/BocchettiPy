@@ -52,4 +52,5 @@ print(type(coordY))
 
 plt.scatter(coordX,coordY)
 plt.ylabel('some numbers')
+plt.savefig("grafico.png")
 plt.show()
