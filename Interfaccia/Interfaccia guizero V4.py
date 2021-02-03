@@ -3,7 +3,7 @@ from guizero import *
 from random import *
 import matplotlib.pyplot as plt
 
-chdir ('BocchettiPy')
+
 app = App(title="Esecutore di file", width=600, height=600, bg="#f4d742")
 
 file = Text(app, text="Inserisci il nome del file:")
