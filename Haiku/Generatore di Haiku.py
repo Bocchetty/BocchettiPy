@@ -9,7 +9,7 @@ with open('Versi da 5.txt') as f1, open('Versi da 7.txt') as f2:
         print(line1+line2+line3)
 
 def istruzioni():
- messagebox.showinfo('istruzioni','cliccare il bottone in basso per generare automaticamente l Haiku?')
+ messagebox.showinfo('istruzioni','cliccare il bottone in basso per generare automaticamente l Haiku')
 root=Tk()
 root.geometry('600x600')
 root.title("GENERATORE DI HAIKU AUTOMATICO")
