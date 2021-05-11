@@ -1,20 +1,22 @@
-import os
-import random
-import tkinter
+from csv import reader
+from random import randint as rd
 
-os.chdir('BocchettiPy\Haiku')
+with open('Haiku_coding.csv', 'r') as csv_file:
+    csv_reader = reader(csv_file)
+    colonne = list(csv_reader)
+lista1= []
+lista2= []
+lista3= []
 
-with open('Versi da 5.txt') as f1, open('Versi da 7.txt') as f2:
-    for line1, line2, line3 in zip(f1, f2):
-        print(line1+line2+line3)
+for i in colonne:
+    lista1.append(i[0])
+    lista2.append(i[1])
+    lista3.append(i[2]) 
 
-def istruzioni():
- messagebox.showinfo('istruzioni','cliccare il bottone in basso per generare automaticamente l Haiku')
-root=Tk()
-root.geometry('600x600')
-root.title("GENERATORE DI HAIKU AUTOMATICO")
-lbl=Label(root,text="Benvenuto nel generatore automatico di Haiku!", font=(20))
-lbl.pack()
-b=Button(root, text="Cliccami per le istruzioni d'uso", command=istruzioni)
-b.pack()
-root.mainloop()
+
+quinario1=lista1[rd(0,9)]
+settenario1=lista2[rd(0,9)]
+quinario2=lista3[rd(0,9)]
+print(quinario1)
+print(settenario1)
+print(quinario2)
