@@ -1,73 +1,81 @@
+import tkinter as tk
 from tkinter import*
 from tkinter import Menu
 from tkinter import messagebox
 from tkinter import filedialog
-from csv import reader
+import csv
 from random import randint as rd
 
 root= Tk()
-root.geometry('600x600')
-root.title("GENERATORE DI HAIKU AUTOMATICO")
+finestra= tk.Canvas(root, width = 600, height = 300, bg="#00ffa2")
 root.configure(background="#00ffa2")
-root.resizable(False, False)
+root.title("GENERATORE DI HAIKU AUTOMATICO")
+finestra.pack(side= BOTTOM)
 
-T = Text(root, height = 4, width = 15, relief= SUNKEN, state= DISABLED)
+finestra2= tk.Canvas(root, width = 200, height = 120, bg="#00ffa2")
+finestra2.pack()
+finestra.create_window(300,140, window=finestra2)
 
-frame = Frame(root)
-frame.pack()
-bottomframe = Frame(root)
-bottomframe.pack( side = BOTTOM )
+quinario= finestra2.create_text(100,30, font= ("georgia", 20))
+settenario= finestra2.create_text(100,60, font= ("georgia", 20))
+quinario2= finestra2.create_text(100,90, font= ("georgia", 20))
 
-with open('Haiku_coding.csv', 'r') as csv_file:
-     csv_reader = reader(csv_file)
-     colonne = list(csv_reader)
+a = open("Haiku_coding.csv")
+line = csv.reader(a)
+v1 = list(line)
 
-lista1= []
-lista2= []
-lista3= []
+b = open("Haiku_coding.csv")
+line = csv.reader(b)
+v2 = list(line)
 
-for i in colonne:
-    lista1.append(i[0])
-    lista2.append(i[1])
-    lista3.append(i[2]) 
-
-quinario1=lista1[rd(0,9)]
-settenario1=lista2[rd(0,9)]
-quinario2=lista3[rd(0,9)]
+c = open("Haiku_coding.csv")
+line = csv.reader(c)
+v3 = list(line)
 
 
 def istruzioni():
  messagebox.showinfo('istruzioni','cliccare il bottone in basso per generare automaticamente l Haiku')
+
+def autori():
+ messagebox.showinfo('Autori','Arcione Vittoria, Biasi Luca, Bocchetti Francesco, Catalano Giovanni')
  
 def onSave():
-    print(filedialog.asksaveasfilename(initialdir = "/",title = "Save as",filetypes = (("Python files","*.py;*.pyw"),("All files","*.*"))))
+    print(filedialog.asksaveasfilename(initialdir = "/",title = "Save as",filetypes = (("Pdf",".pdf"),("txt",".txt"))))
 
-def testo():
-    l= Label(T, text= quinario1)
-    m= Label(T, text= settenario1)
-    n= Label(T, text= quinario2)
-    l.pack()
-    m.pack()
-    n.pack()
+def generatore(side=BOTTOM):
+    
+    verso1=v1[rd(0, 9)]
+    verso2=v2[rd(0, 9)]
+    verso3=v3[rd(0, 9)]
+    
+    finestra2.itemconfig(quinario, text=str(verso1))
+    finestra2.itemconfig(settenario, text=str(verso2))
+    finestra2.itemconfig(quinario2, text=str(verso3))
+
+
 
 lbl=Label(root,text="Benvenuto nel generatore automatico di Haiku!", fg='#004466', font=("times new roman", 20), background="#00ffa2")
-tasto1=Button(root,text="Clicca qui per le istruzioni d'uso", fg= '#004466', command=istruzioni, font=("georgia", 15), background="#00ffa2")
-tasto2=Button(bottomframe,text="Clicca qui per generare un Haiku", fg= '#004466', font=("georgia", 15), background="#00ffa2", command=testo)
+
+tasto=Button(root,text="Clicca qui per generare un Haiku", fg= '#004466', font=("georgia", 15), background="#00ffa2", command=generatore)
+finestra.create_window(300, 50, window=tasto)
+
 
 menubar = Menu(root)
 
 filemenu = Menu(menubar)
-filemenu.add_command(label="Istruzioni", command= istruzioni)
-filemenu.add_command(label="Salva", command=onSave)
+filemenu.add_command(label="Istruzioni", command=istruzioni)
+filemenu.add_command(label="Copia", command=onSave)
+filemenu.add_command(label="Autori", command=autori)
 filemenu.add_command(label="Chiudi", command=root.quit)
+
 
 menubar.add_cascade(label="Impostazioni", menu=filemenu)
 
 root.config(menu=menubar)
 
 lbl.pack()
-T.pack()
-tasto1.pack()
-tasto2.pack()
+tasto.pack()
 
 root.mainloop()
+
+#creare 3 file txt.     verso1=l1(rd(0,len(i)) for i in a),verso2=l2(rd(0,len(i)) for i in b),verso3=l3(rd(0,len(i)) for i in c)

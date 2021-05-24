@@ -20,3 +20,6 @@ quinario2=lista3[rd(0,9)]
 print(quinario1)
 print(settenario1)
 print(quinario2)
+
+Panel1= Label(root, bg= "#ffffff")
+T = Text(root, height = 10, width = 40, relief= SUNKEN, state= DISABLED)
