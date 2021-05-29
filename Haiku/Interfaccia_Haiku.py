@@ -11,7 +11,7 @@ root= Tk()
 finestra= tk.Canvas(root, width = 600, height = 300, bg="#00ffa2")
 root.configure(background="#00ffa2")
 root.resizable(False, False)
-root.title("GENERATORE DI HAIKU AUTOMATICO")
+root.title("Bansho un'Haiku al giorno")
 finestra.pack(side= BOTTOM)
 
 finestra2= tk.Canvas(root, width = 400, height = 120, bg="#00ffa2")
