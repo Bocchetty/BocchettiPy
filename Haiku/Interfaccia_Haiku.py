@@ -22,6 +22,14 @@ quinario= finestra2.create_text(200,30, font= ("georgia", 20))
 settenario= finestra2.create_text(200,60, font= ("georgia", 20))
 quinario2= finestra2.create_text(200,90, font= ("georgia", 20))
 
+#Sfondo
+img = PhotoImage(file="Sfondo.jpg")
+label = Label(
+    tk,
+    image=img
+)
+label.place(x=0, y=0)
+
 #Lettore del file
 with open('Haiku_coding.csv', 'r', encoding="utf8") as csv_file:
     csv_reader = reader(csv_file)
@@ -40,6 +48,12 @@ l2= (len(lista2)-1)
 l3= (len(lista3)-1)
 
 #Funzioni
+def background_image():
+    try:
+        finestra.config(bg = img)
+    except:
+        pass
+
 def istruzioni():
  messagebox.showinfo('Istruzioni','Cliccare il bottone in basso per generare automaticamente l Haiku. Per rigenerare interamente l Haiku ricliccare il bottone. Per rigenerare solamente un verso dell Haiku, cliccare il bottone alla sua sinistra.')
 
@@ -95,6 +109,7 @@ filemenu= Menu(menubar)
 filemenu.add_command(label="Istruzioni", command=istruzioni)
 filemenu.add_command(label="Autori", command=autori)
 filemenu.add_command(label="Copia", command=copia)
+filemenu.add_command(label="Cambia Sfondo", command=background_image)
 filemenu.add_command(label="Chiudi", command=root.quit)
 
 menubar.add_cascade(label="Impostazioni", menu=filemenu)
