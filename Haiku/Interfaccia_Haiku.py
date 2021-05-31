@@ -10,7 +10,7 @@ from tkinter.filedialog import asksaveasfile
 root= Tk()
 finestra= tk.Canvas(root, width = 600, height = 300, bg="#00ffa2")
 root.configure(background="#00ffa2")
-root.resizable(False, False)
+root.resizable()
 root.title("Bansho un'Haiku al giorno")
 finestra.pack(side= BOTTOM)
 
@@ -23,12 +23,10 @@ settenario= finestra2.create_text(200,60, font= ("georgia", 20))
 quinario2= finestra2.create_text(200,90, font= ("georgia", 20))
 
 #Sfondo
-img = PhotoImage(file="Sfondo.jpg")
-label = Label(
-    tk,
-    image=img
-)
-label.place(x=0, y=0)
+img = PhotoImage(file="Sfondo.gif")
+background_label= Label(finestra, image=img, background="white")
+background_label.img=img
+background_label.place(x=0, y=0, height=300, width=340)
 
 #Lettore del file
 with open('Haiku_coding.csv', 'r', encoding="utf8") as csv_file:
@@ -50,7 +48,7 @@ l3= (len(lista3)-1)
 #Funzioni
 def background_image():
     try:
-        finestra.config(bg = img)
+        finestra.config(bg= img)
     except:
         pass
 
