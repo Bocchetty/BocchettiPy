@@ -10,6 +10,7 @@ from tkinter import messagebox
 from csv import reader
 from random import randint as rd
 from tkinter.filedialog import asksaveasfile
+from PIL import Image, ImageTk
 
 #Interfaccia e layout interno
 root= Tk()
@@ -18,6 +19,12 @@ root.configure(background="#00ffa2")
 root.resizable()
 root.title("Bansho un'Haiku al giorno")
 finestra.pack(side= BOTTOM)
+
+load= Image.open("Sfondo.gif")
+render= ImageTk.PhotoImage(load)
+img= Label(image=render)
+img.image = render
+finestra.create_window(300,150, window=img)  
 
 finestra2= tk.Canvas(root, width = 400, height = 120, bg="#00ffa2")
 finestra2.pack()
@@ -101,7 +108,6 @@ filemenu= Menu(menubar)
 filemenu.add_command(label="Istruzioni", command=istruzioni)
 filemenu.add_command(label="Autori", command=autori)
 filemenu.add_command(label="Copia", command=copia)
-filemenu.add_command(label="Cambia Sfondo", command=background_image)
 filemenu.add_command(label="Chiudi", command=root.quit)
 
 menubar.add_cascade(label="Impostazioni", menu=filemenu)
@@ -113,6 +119,5 @@ tasto.pack()
 tasto1.pack()
 tasto2.pack()
 tasto3.pack()
-
 
 root.mainloop()
