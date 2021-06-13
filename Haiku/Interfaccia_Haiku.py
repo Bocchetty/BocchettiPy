@@ -15,7 +15,7 @@ from tkinter.filedialog import asksaveasfile
 root= Tk()
 finestra= tk.Canvas(root, width = 600, height = 300, bg="#00ffa2")
 root.configure(background="#00ffa2")
-root.resizable()
+root.resizable(False, False)
 root.title("Bansho un'Haiku al giorno")
 finestra.pack(side= BOTTOM)
 
@@ -26,7 +26,6 @@ finestra.create_window(300,140, window=finestra2)
 quinario= finestra2.create_text(200,30, font= ("georgia", 20))
 settenario= finestra2.create_text(200,60, font= ("georgia", 20))
 quinario2= finestra2.create_text(200,90, font= ("georgia", 20))
-
 
 #Lettore del file
 with open('Haiku_coding.csv', 'r', encoding="utf8") as csv_file:
@@ -51,11 +50,6 @@ def istruzioni():
 
 def autori():
  messagebox.showinfo('Autori','Arcione Vittoria, Biasi Luca, Bocchetti Francesco, Catalano Giovanni')
-
-def copia():
-    files = [('File di testo', '*.txt'),
-             ('Pdf', '*.pdf')]
-    file = asksaveasfile(filetypes = files, defaultextension = files)
 
 def generatore0(side=BOTTOM):
     
@@ -100,7 +94,6 @@ menubar= Menu(root)
 filemenu= Menu(menubar)
 filemenu.add_command(label="Istruzioni", command=istruzioni)
 filemenu.add_command(label="Autori", command=autori)
-filemenu.add_command(label="Copia", command=copia)
 filemenu.add_command(label="Chiudi", command=root.quit)
 
 menubar.add_cascade(label="Impostazioni", menu=filemenu)
@@ -109,9 +102,5 @@ root.config(menu=menubar)
 
 lbl.pack()
 tasto.pack()
-tasto1.pack()
-tasto2.pack()
-tasto3.pack()
-
 
 root.mainloop()
