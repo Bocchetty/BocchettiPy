@@ -101,7 +101,6 @@ filemenu= Menu(menubar)
 filemenu.add_command(label="Istruzioni", command=istruzioni)
 filemenu.add_command(label="Autori", command=autori)
 filemenu.add_command(label="Copia", command=copia)
-filemenu.add_command(label="Cambia Sfondo", command=background_image)
 filemenu.add_command(label="Chiudi", command=root.quit)
 
 menubar.add_cascade(label="Impostazioni", menu=filemenu)
