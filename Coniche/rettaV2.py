@@ -1,5 +1,6 @@
 # La classe retta
 
+import math
 
 class retta:
     
@@ -8,6 +9,38 @@ class retta:
         self.__b = float(b)
         self.__c = float(c)
         self.__punti = []
+    
+    def getA(self):
+        return f"\n a = {self.__a}"
+    
+    def getB(self):
+        return f"\n b = {self.__b}"
+
+    def getC(self):
+        return f"\n c = {self.__c}"
+
+    def a_b_c_da_punti(self, x1, x2, y1, y2):
+        self.__x1 = int(x1)
+        self.__x2 = int(x2)
+        self.__y1 = int(y1)
+        self.__y2 = int(y2)
+        x_d = (self.__x2 - self.__x1)
+        y_d = (self.__y2 - self.__y1)
+        MCD = math.gcd(x_d, y_d)
+        mcm = (x_d * y_d) / MCD
+        a = mcm / x_d
+        b = mcm / y_d
+        c = (mcm / x_d * -self.__x2) + (mcm / y_d * self.__y2)
+        print("a = ", a,',', "b = ", b,',', "c = ",c)
+
+    def a_b_c_da_m(self, x3, y3, m1):
+        self.__x3 = int(x3)
+        self.__y3 = int(y3)
+        self.__m1 = int(m1)
+        a = self.__m1
+        b = -1
+        c = (self.__m1 * -self.__x3)+self.__y3
+        print("a = ", a,',', "b = ", b,',', "c = ",c)
 
     def Implicita(self):
         if self.__b == 0:
@@ -77,5 +110,7 @@ print(valori.Esplicita())
 print(valori.m())
 print(valori.trovaY(input('x = ')))
 print(valori.punti(input('Inizio intervallo = '), input('Fine intervallo = ')))
-print(valori.instersezione(1, 2, 5))
+print(valori.instersezione(input('a1 = ' ), input('b1 = ' ), input('c1 = ' )))
 print(valori.fascio_parallelo())
+print(valori.a_b_c_da_punti(input('x1 = ' ), input('x2 = ' ), input('y1 = ' ), input('y2 = ' )))
+print(valori.a_b_c_da_m(input('x1 = ' ), input('y1 = ' ), input('m = ' )))
