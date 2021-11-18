@@ -5,12 +5,9 @@ import Coniche
 class parabola(Coniche.Coniche):
     
     def __init_subclass__(self, tipo = "param", p1 = None, p2 = None, p3 = None, p4 = None):
-        if(tipo =="param"):   
-            self.__a = p1  
-            self.__b = p2
-            self.__c = p3
-            self.__punti = []
-        
+        if(tipo =="param"):
+            super.__init__(self, tipo = "param", p1 = None, p2 = None, p3 = None, p4 = None) 
+
         elif(tipo == "fuocoDiret"):
             pass
         
