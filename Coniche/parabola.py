@@ -1,6 +1,7 @@
 #La classe parabola
 
 import Coniche
+from retta import esplicita
 
 class parabola(Coniche.Coniche):
     
@@ -15,24 +16,21 @@ class parabola(Coniche.Coniche):
      if (asse_simmetria == "x"):
         y = -((self.__b)/((self.__a)*2))
         x = (1-(pow(self.__b,2)-4*self.__a*self.__c))/4*self.__a
-        return f"Le coordinate del fuoco sono {x,y}"
+        return x,y
         
      elif (asse_simmetria == "y"):
             x =-((self.__b)/((self.__a)*2))
             y = (1-(pow(self.__b,2)-4*self.__a*self.__c))/4*self.__a
-            return f"Le coordinate del fuoco sono {x,y}"
+            return x,y
     
     def direttrice(self, asse_simmetria = "x"):
      if (asse_simmetria == "x"):
         y= -1-(pow(self.__b,2)-4*self.__a*self.__c)/4*self.__a
-        return f"L'equazione della direttrice è y= {y}"
+        return y
      
      elif (asse_simmetria == "y"):
         x= -1-(pow(self.__b,2)-4*self.__a*self.__c)/4*self.__a
-        return f"L'equazione della direttrice è x= {x}"  
-
-    def vertice():
-        pass
+        return x
     
 valori = parabola(input('tipo = ' ), input('valore 1 = ' ), input('valore 2 = ' ), input('valore 3 = ' ), input('valore 4 = ' ))
 print(valori.fuoco(input('Asse simmetria parallelo a ' )))

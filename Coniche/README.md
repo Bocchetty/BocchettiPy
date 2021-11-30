@@ -4,3 +4,4 @@
 * Mariano Raffaele
 * Bocchetti Francesco
 * Biasi Luca
+* di Gennaro Gabriele
