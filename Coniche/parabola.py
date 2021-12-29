@@ -4,9 +4,10 @@ import Coniche
 
 class parabola(Coniche.Coniche):
     
-    def __init_subclass__(self, tipo = "param", p1 = None, p2 = None, p3 = None, p4 = None):
-        if(tipo =="param"):
-            super.__init__(self, tipo = "param", p1 = None, p2 = None, p3 = None, p4 = None) 
+    def __init__subclass__(self, tipo = "param", p1 = None, p2 = None, p3 = None, p4 = None):
+
+        if(tipo == "param"):
+            super().__init__(self, tipo = "param", p1 = None, p2 = None, p3 = None, p4 = None)
 
         elif(tipo == "fuocoDiret"):
             #p1= coordinata x di f
