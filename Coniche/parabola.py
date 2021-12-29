@@ -9,13 +9,16 @@ class parabola(Coniche.Coniche):
             super.__init__(self, tipo = "param", p1 = None, p2 = None, p3 = None, p4 = None) 
 
         elif(tipo == "fuocoDiret"):
+            #p1= coordinata x di f
             self.__p1 = int(p1)
+            #p2= coordinata y di f
             self.__p2 = int(p2)
+            #p3= direttrice
             self.__p3 = int(p3)
             self.__punti = []
-            self.__a = 2/(4*self.__p2 - 4*self.__p3)
+            self.__a = 1/(2*self.__p2 - 2*self.__p3)
             self.__b = -2*self.__a * self.__p1
-            self.__c = (4*self.__p2 + self.__b*self.__b - 1)/(4*self.__a)
+            self.__c = (4*self.__a*self.__p2 + self.__b*self.__b - 1)/(4*self.__a)
         
     def fuoco(self, asse_simmetria = "x"):
      if (asse_simmetria == "x"):
