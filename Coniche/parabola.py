@@ -1,7 +1,6 @@
 #La classe parabola
 
 import Coniche
-from retta import esplicita
 
 class parabola(Coniche.Coniche):
     
