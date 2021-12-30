@@ -3,16 +3,28 @@
 import Coniche
 import math
 
-class retta(Coniche.Coniche):
+class Retta(Coniche.Coniche):
             
-    def __init__subclass__(self, tipo = "param", p1 = None, p2 = None, p3 = None, p4 = None):
+    def __init__(self, tipo, p1, p2, p3, p4):
         
         if(tipo == "param"):
-            super().__init__(self, tipo = "punti", p1 = None, p2 = None, p3 = None, p4 = None)
+            super().__init__(tipo, p1, p2, p3, p4)
+            self.__a = int(p1)
+            self.__b = int(p2)
+            self.__c = int(p3)
+            self.__punti = []
               
         elif(tipo == "punti"):
-            super().__init__(self, tipo = "punti", p1 = None, p2 = None, p3 = None, p4 = None) 
-
+            super().__init__(tipo , p1, p2, p3, p4)
+            self.__a = int(p1)
+            self.__b = int(p2)
+            self.__c = int(p3)
+            self.__x1 = int(p1)
+            self.__x2 = int(p2)
+            self.__y1 = int(p3)
+            self.__y2 = int(p4)
+            self.__punti = []
+            
         elif(tipo == "coeff"):
             self.__x3 = int(p1)
             self.__y3 = int(p2)
@@ -84,7 +96,7 @@ class retta(Coniche.Coniche):
         else:
             return f"y = {-self.__a / self.__b}x + q"
 
-valori = retta (input('tipo = ' ), input('valore 1 = ' ), input('valore 2 = ' ), input('valore 3 = ' ), input('valore 4 = ' ))
+valori = Retta (input('tipo = ' ), input('valore 1 = ' ), input('valore 2 = ' ), input('valore 3 = ' ), input('valore 4 = ' ))
 print(valori.Implicita())
 print(valori.Esplicita())
 print("Coefficiente angolare: ", valori.m())

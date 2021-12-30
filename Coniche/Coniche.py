@@ -4,7 +4,7 @@ import math
 
 class Coniche:
     
-    def __init__(self, tipo = "param", p1 = None, p2 = None, p3 = None, p4 = None):
+    def __init__(self, tipo, p1, p2, p3, p4):
         if(tipo == "param"):   
             self.__a = int(p1)
             self.__b = int(p2)
