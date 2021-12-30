@@ -4,12 +4,12 @@ import Coniche
 import math
 
 class retta(Coniche.Coniche):
-    
+            
     def __init__subclass__(self, tipo = "param", p1 = None, p2 = None, p3 = None, p4 = None):
         
         if(tipo == "param"):
-            super().__init__(self, tipo = "param", p1 = None, p2 = None, p3 = None, p4 = None) 
-            
+            super().__init__(self, tipo = "punti", p1 = None, p2 = None, p3 = None, p4 = None)
+              
         elif(tipo == "punti"):
             super().__init__(self, tipo = "punti", p1 = None, p2 = None, p3 = None, p4 = None) 
 
@@ -20,7 +20,7 @@ class retta(Coniche.Coniche):
             self.__punti = []
             self.__a = self.__m1
             self.__b = -1
-            self.__c = (self.__m1 * -self.__x3)+self.__y3
+            self.__c = (self.__m1 * -self.__x3) + self.__y3
             print("a = ", self.__a,',', "b = ", self.__b,',', "c = ",self.__c)
 
     def Implicita(self):
