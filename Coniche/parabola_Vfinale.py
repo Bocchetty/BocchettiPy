@@ -8,7 +8,10 @@ class parabola(Coniche.Coniche):
 
         if(tipo == "param"):
             super().__init__(tipo, p1, p2, p3, p4)
-            
+            self.__a = int(p1)
+            self.__b = int(p2)
+            self.__c = int(p3)
+            self.__punti = []
 
         elif(tipo == "fuocoDiret"):
             #p1= coordinata x di f
