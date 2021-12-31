@@ -38,12 +38,12 @@ class parabola(Coniche.Coniche):
     
     def direttrice(self, asse_simmetria = "x"):
      if (asse_simmetria == "x"):
-        y= -1-(pow(self.__b,2)-4*self.__a*self.__c)/4*self.__a
-        return y
-     
-     elif (asse_simmetria == "y"):
         x= -1-(pow(self.__b,2)-4*self.__a*self.__c)/4*self.__a
         return x
+     
+     elif (asse_simmetria == "y"):
+        y= -1-(pow(self.__b,2)-4*self.__a*self.__c)/4*self.__a
+        return y
     
 valori = parabola(input('tipo = ' ), input('valore 1 = ' ), input('valore 2 = ' ), input('valore 3 = ' ), input('valore 4 = ' ))
 print(valori.fuoco(input('Asse simmetria parallelo a ' )))
