@@ -25,7 +25,7 @@ class parabola(Coniche.Coniche):
             self.__b = -2*self.__a * self.__p1
             self.__c = (4*self.__a*self.__p2 + self.__b*self.__b - 1)/(4*self.__a)
         
-    def fuoco(self, asse_simmetria = "x"):
+    def fuoco(self, asse_simmetria):
      if (asse_simmetria == "x"):
         y = -((self.__b)/((self.__a)*2))
         x = (1-(pow(self.__b,2)-4*self.__a*self.__c))/4*self.__a
@@ -36,7 +36,7 @@ class parabola(Coniche.Coniche):
             y = (1-(pow(self.__b,2)-4*self.__a*self.__c))/4*self.__a
             return x,y
     
-    def direttrice(self, asse_simmetria = "x"):
+    def direttrice(self, asse_simmetria):
      if (asse_simmetria == "x"):
         x= -1-(pow(self.__b,2)-4*self.__a*self.__c)/4*self.__a
         return x
