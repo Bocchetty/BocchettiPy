@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    box-sizing: content-box;
+    font-family: 'Roboto', sans-serif;
+    color: #111;
+    background-color: #fafafa;
+}
+
+header {
+    letter-spacing: 6rem;
+    text-align: center;
+}
+
+header h1 {
+    letter-spacing: 8rem;
+}
+
+p {
+    color: orangered;
+    font-size: 30rem;
+}
+
+.main {
+    font-size: 3rem;
+    width: 50vw;
+    margin-inline: auto;
+}
+
+.todo {
+    list-style-type: none;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #111;
+    display: flex;
+    flex-direction: row;
+}
+
+.todo__text {
+    margin-right: auto;
+}
+
+.done {
+    color: #777;
+    text-decoration: line-through;
+}
+
+.action {
+    font-size: 5rem;
+    padding: 1rem;
+}
+
+.danger {
+    background-color: orange;
+}

@@ -1,0 +1,21 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bocchetti Francesco",
+  "license": "ISC",
+  "dependencies": {
+    "cowsay": "^1.5.0",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
+  },
+  "description": "To do list site",
+  "repository": {
+    "type": "git",
+    "url": "Bocchettipy"
+  }
+}
