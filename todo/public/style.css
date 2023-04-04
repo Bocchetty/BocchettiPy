@@ -17,12 +17,19 @@ body {
 }
 
 header {
-    letter-spacing: 6rem;
+    font-size: 8rem;
+    letter-spacing: 2rem;
     text-align: center;
 }
 
 header h1 {
-    letter-spacing: 8rem;
+    font-size: 8rem;
+    letter-spacing: 2rem;
+}
+
+header h2 {
+    font-size: 6rem;
+    letter-spacing: 2rem;
 }
 
 p {

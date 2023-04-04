@@ -42,18 +42,18 @@ app.post('/mark-done', (req, res) => {
 });
 
 app.post('/clean', (req, res) => {
-    todos = todos.filter(todo => todo.done==false)
-})
+    todos = todos.filter(todo => todo.done == false)
+});
 
 app.post('/add_todo', (req, res) => {
-    const todo= {
-        id: nextid,
+    const todo = {
+        id:nextid,
         text:req.body.text,
-        done:false
+        done:false,
     }
     todos++
     todos.push(todo);
-    res.redirect("/")
-})
+    res.redirect("/");
+});
 
 app.listen(3000);

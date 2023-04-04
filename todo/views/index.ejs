@@ -26,15 +26,15 @@
             </form>
         </div>
         <div class="insert">
-            <form action="/add-todo" method="post">
+            <form action="/add_todo" method="post">
                 <input type="text" name="text" placeholder="Insert to do here">
             </form>
         </div>
         <ul class = "todos">
             <% todos.forEach(todo => { %>
             <li class = "todo">
-                <span class="todo__text <%= todo.done? 'done' : '' %>"
-                    ><%= todo.text %></span>
+                <span class="todo__text <%= todo.done? 'done' : '' %>">
+                    <%= todo.text %></span>
                 <form action="/mark-done" method="post">
                     <input type="hidden" name= "id" value="<%= todo.id %>">
                     <button type="submit">Mark Done</button>
