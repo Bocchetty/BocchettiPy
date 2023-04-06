@@ -51,7 +51,8 @@ app.post('/add_todo', (req, res) => {
         text:req.body.text,
         done:false,
     }
-    todos++
+
+    todos++;
     todos.push(todo);
     res.redirect("/");
 });

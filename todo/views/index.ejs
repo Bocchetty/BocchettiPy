@@ -34,7 +34,8 @@
             <% todos.forEach(todo => { %>
             <li class = "todo">
                 <span class="todo__text <%= todo.done? 'done' : '' %>">
-                    <%= todo.text %></span>
+                    <%= todo.text %>
+                </span>
                 <form action="/mark-done" method="post">
                     <input type="hidden" name= "id" value="<%= todo.id %>">
                     <button type="submit">Mark Done</button>
