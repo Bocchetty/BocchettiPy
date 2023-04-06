@@ -43,6 +43,7 @@ app.post('/mark-done', (req, res) => {
 
 app.post('/clean', (req, res) => {
     todos = todos.filter(todo => todo.done == false)
+    res.redirect('/');
 });
 
 app.post('/add_todo', (req, res) => {
