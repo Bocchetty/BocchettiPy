@@ -2,3 +2,5 @@ redis_astropi/config.py
 .vscode/
 Coniche/__pycache__/
 Json/
+.todo/node_modules
+.todo/serviceAccountKey.Json
