@@ -12,6 +12,27 @@ app.use(express.static('public'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
+const admin = require("firebase-admin");
+
+const serviceAccount = require("./serviceAccountKey.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+
+const { getFirestore } = require('firebase-admin/firestore');
+const db = getFirestore();
+console.log(db);
+
+const data = {
+    name: 'Los Angeles',
+    state: 'CA',
+    country: 'USA',
+};
+
+// Add a new document in collection 'cities' with ID 'LA'
+const res = db.collection('cities').doc('LA').set(data);
+
 let todos = [
  {
     id: 1,
@@ -25,10 +46,29 @@ let todos = [
  },
 ];
 
+let nextId = 3
+
 // get è un metodo http
 app.get('/', (req, res) => {
     res.render('index', {
         todos:todos,
+    });
+});
+
+app.get('/', async (req, res) => {
+
+    const todoRef = db.collection('todos');
+    const snapshot = await todosRef.get();
+
+    todos = [];
+    snapshot.forEach((doc) => {
+        console.log(doc);
+        todos.push({...doc.data(), id : doc.id});
+    });
+
+    res.render('index', {
+        author: 'Bocchetti Francesco',
+        todos : todos,
     });
 });
 
@@ -38,6 +78,9 @@ app.post('/mark-done', (req, res) => {
     const todo = todos.find(todo => todo.id == id);
     todo.done = !todo.done;
 
+    const todoRef = db.collection('todos').doc(todoId);
+    todoRef.update({ done: todos[todoIndex].done});
+
     res.redirect('/');
 });
 
@@ -46,15 +89,20 @@ app.post('/clean', (req, res) => {
     res.redirect('/');
 });
 
-app.post('/add_todo', (req, res) => {
+app.post('/new_todo', (req, res) => {
+    const text = req.body.text;
+
     const todo = {
-        id:nextid,
-        text:req.body.text,
+        //id:nextId,
+        text:text,
         done:false,
     }
 
     todos++;
     todos.push(todo);
+
+    db.collection('todos').add(todo);
+
     res.redirect("/");
 });
 
