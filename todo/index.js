@@ -85,6 +85,7 @@ app.post('/mark-done', (req, res) => {
 
     const todoRef = db.collection('todos').doc(todo.id);
     todoRef.update({ done: todos[todoIndex].done});
+    //[todoIndex]
 
     res.redirect('/');
 });

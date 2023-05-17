@@ -43,7 +43,7 @@
             <% }); %>
         </ul>
     </main>
-    
+
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -56,7 +56,7 @@
     </section>
 
     <script>
-        const socket =io();
+        const socket = io();
 
 //on è il comando evento, quando accade questo
         socket.on('initial-data', (data) => {
