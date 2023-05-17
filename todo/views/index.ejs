@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;700&display=swap" rel="stylesheet">
 
-    <!-- foglio di stile -->
     <link rel = 'stylesheet' href = '/style.css' />
     <title>Document</title>
 </head>
@@ -44,5 +43,71 @@
             <% }); %>
         </ul>
     </main>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <section class="socket-test">
+        <button onclick = "sayHello()">Hello Server</button>
+    </section>
+
+    <section class = "chart">
+        <canvas id = "myChart"></canvas>
+    </section>
+
+    <script>
+        const socket =io();
+
+//on è il comando evento, quando accade questo
+        socket.on('initial-data', (data) => {
+            console.log(data);
+        });
+
+//emit, invia dal server un'informazione al client senza fare refresh della pagina
+        function sayHello() {
+            socket.emit('hello', {
+                text: 'Hello Server',
+                from: 'The best client in the world',
+            });
+        }
+
+        const ctx = document.getElementById('myChart');
+
+        const items = []
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                datasets: [
+                    {
+                        label: 'My Data',
+                        data: items,
+                    },
+                ],
+            },
+            options: {
+                parsing: {
+                    xAxisKey: 'timestamp',
+                    yAxisKey: 'value',
+                },
+            },
+        });
+
+        function addData(chart, data) {
+            items.push(data);
+            const datasets = [ 
+                {
+               label: "My Data",
+               data: items,
+               },
+            ];
+            chart.data.datasets = datasets;
+            chart.update('none');
+        }
+
+        socket.on('new-data', (data) => {
+            //console.log(data);
+            addData(chart, data);
+        })
+    </script>
 </body>
 </html>

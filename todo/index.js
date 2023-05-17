@@ -1,7 +1,12 @@
 // index.js
 
 const express = require('express');
+const { createServer } = require('http');
+const { Server } = require('socket.io');
+
 const app = express();
+const httpServer = createServer(app);
+const io = new Server(httpServer);
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
@@ -24,14 +29,14 @@ const { getFirestore } = require('firebase-admin/firestore');
 const db = getFirestore();
 console.log(db);
 
-const data = {
-    name: 'Los Angeles',
-    state: 'CA',
-    country: 'USA',
-};
-
+/*const data = {
+    name: 'Los Angeles';
+    state: 'CA';
+    country: 'USA';
+}
+*/
 // Add a new document in collection 'cities' with ID 'LA'
-const res = db.collection('cities').doc('LA').set(data);
+//const res = db.collection('cities').doc('LA').set(data);
 
 let todos = [
  {
@@ -49,15 +54,15 @@ let todos = [
 let nextId = 3
 
 // get è un metodo http
-app.get('/', (req, res) => {
-    res.render('index', {
-        todos:todos,
-    });
-});
+//app.get('/', (req, res) => {
+//    res.render('index', {
+//        todos:todos,
+//    });
+//});
 
 app.get('/', async (req, res) => {
 
-    const todoRef = db.collection('todos');
+    const todosRef = db.collection('todos');
     const snapshot = await todosRef.get();
 
     todos = [];
@@ -78,7 +83,7 @@ app.post('/mark-done', (req, res) => {
     const todo = todos.find(todo => todo.id == id);
     todo.done = !todo.done;
 
-    const todoRef = db.collection('todos').doc(todoId);
+    const todoRef = db.collection('todos').doc(todo.id);
     todoRef.update({ done: todos[todoIndex].done});
 
     res.redirect('/');
@@ -98,7 +103,6 @@ app.post('/new_todo', (req, res) => {
         done:false,
     }
 
-    todos++;
     todos.push(todo);
 
     db.collection('todos').add(todo);
@@ -106,4 +110,25 @@ app.post('/new_todo', (req, res) => {
     res.redirect("/");
 });
 
-app.listen(3000);
+//Quando l'utente apre una connessione
+io.on('connection', (socket) => {
+    console.log('new connection here!');
+    socket.emit('initial-data', {
+        msg:'initial data here'
+    });
+
+    socket.on('hello', (data) => {
+        console.log(data);
+    });
+});
+
+//Invia ogni secondo a tutti i client un dato
+setInterval(() => {
+    io.emit('new-data', {
+        value: Math.random()*10,
+        timestamp: new Date(),
+    })
+}, 1000);
+
+//app.listen(3000);
+httpServer.listen(3000);
